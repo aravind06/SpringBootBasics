@@ -2,13 +2,13 @@ package com.restservices.controller;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restservices.model.Employee;
@@ -19,6 +19,9 @@ public class EmployeeController {
 
 	@Autowired
 	EmployeeService service;
+
+    @Autowired
+    private SessionFactory sessionFactory;
 	
 	@PostMapping(path="/init")
 	public void insertInitial(@RequestBody List<Employee> employeeList) {
@@ -26,10 +29,10 @@ public class EmployeeController {
 		 service.insertInitial(employeeList);
 	}
 	
-	@GetMapping(path="/find")
-	public Employee findEmployee(@RequestParam(name="name", required=true) String name) {
-		return service.findEmployee(name);
-	}
+//	@GetMapping(path="/find")
+//	public Employee findEmployee(@RequestParam(name="name", required=true) String name) {
+//		return service.findEmployee(name);
+//	}
 	
 	@GetMapping(path="/getAll")
 	public List<Employee> findAllEmployee() {
