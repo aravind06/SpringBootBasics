@@ -1,7 +1,33 @@
 package com.restservices.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Employee_registry")
 public class Employee {
-	int id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column
+	private String firstName;
+	@Column
+	private String lastName;
+	@Column
+	private String age;
+	@Column
+	private String company;
+
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Employee(int id, String firstName, String lastName, String age, String company) {
 		super();
 		this.id = id;
@@ -11,71 +37,45 @@ public class Employee {
 		this.company = company;
 	}
 
-
-	String firstName;
-	String lastName;
-	String age;
-	String company;
-	
-	
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
 	public String getAge() {
 		return age;
 	}
-
 
 	public void setAge(String age) {
 		this.age = age;
 	}
 
-
 	public String getCompany() {
 		return company;
 	}
-
 
 	public void setCompany(String company) {
 		this.company = company;
 	}
 
-
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	
-
-
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	@Override
 	public String toString() {
@@ -83,8 +83,4 @@ public class Employee {
 				+ ", company=" + company + "]";
 	}
 
-
-	
-	
-	
 }

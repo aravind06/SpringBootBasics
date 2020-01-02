@@ -27,9 +27,10 @@ public class EmployeeController {
 	}
 	
 	@GetMapping(path="/find")
-	public Employee findEmployee(@RequestParam(name="name", required=true) String name) {
-		return service.findEmployee(name);
+	public List<Employee> findEmployee(@RequestParam(name="name", required=true) String name) {
+		return service.findMatchingNames(name);
 	}
+	
 	
 	@GetMapping(path="/getAll")
 	public List<Employee> findAllEmployee() {

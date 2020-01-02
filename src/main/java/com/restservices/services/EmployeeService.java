@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.restservices.model.Employee;
-import com.restservices.repo.EmployeeRepo;
+import com.restservices.repo.EmployeeRepoIntf;
 
 @Service
 public class EmployeeService {
 	@Autowired
-	EmployeeRepo repo;
+	EmployeeRepoIntf repo;
 	
 	public void insertInitial(List<Employee> myList) {
 		repo.insert(myList);
@@ -23,6 +23,10 @@ public class EmployeeService {
 	
 	public List<Employee> findAllEmployee() {
 		return repo.findAllEmp();
+	}
+	
+	public List<Employee> findMatchingNames(String name) {
+		return repo.findByName(name);
 	}
 	
 	public boolean deleteById(int id) {
